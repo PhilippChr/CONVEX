@@ -1,0 +1,11 @@
+{
+	"tagMe_token": 								"",
+	"hyperparameters_frontier_detection": 		[0.6, 0.3, 0.1],
+	"hyperparameters_answer_detection": 		[0.9, 0.1],
+	"number_of_frontier_nodes":					3,
+	"domain":									"ALL",
+	"domain_options":							["books", "movies", "music", "soccer", "tv_series", "ALL"],
+	"conversations_path":						"data/test_set/test_set_ALL.json",
+	"wikidata_dump_path":						"data/wikidata2018_09_11.hdt",
+	"telegram_chat_id":							"not needed - allows to send the results via message; need to include bot token in library/telegram_api.py"
+}
