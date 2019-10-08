@@ -1,12 +1,5 @@
 import networkx as nx
-# import sys
 
-# library
-# sys.path.append("library")
-# import string_conversions as string
-# import wikidata as wd
-
-# data
 # used to distinguish between multiple predicate nodes with same label - next index for predicate
 predicate_nodes = {}
 qualifier_predicate_nodes = {}
@@ -14,33 +7,6 @@ qualifier_predicate_nodes = {}
 #####################################################
 ###		Graphs
 #####################################################
-
-# def complete_statement(statement, offline=False):
-# 	if not statement['entity'].get('label'):
-# 		try:
-# 			statement['entity']['label'] = wd.wikidata_id_to_label(statement['entity']['id'])
-# 		except Exception as e:
-# 			print(statement)
-# 			print(str(e))
-	
-# 	if not statement['object'].get('label'):
-# 		statement['object']['label'] = wd.wikidata_id_to_label(statement['object']['id'])
-
-# 	if not statement['predicate'].get('label'):
-# 		statement['predicate']['label'] = wd.wikidata_id_to_label(statement['predicate']['id'])
-
-# 	# if there are no qualifiers in the statement, nothing to do
-# 	if not statement.get('qualifiers'):
-# 		return statement
-
-# 	for qualifier in statement['qualifiers']:
-# 		if not qualifier['qualifier_predicate'].get('label'):
-# 			qualifier['qualifier_predicate']['label'] = wd.wikidata_id_to_label(qualifier['qualifier_predicate']['id'])
-
-# 		if not qualifier['qualifier_object'].get('label'):
-# 			qualifier['qualifier_object']['label'] = wd.wikidata_id_to_label(qualifier['qualifier_object']['id'])
-# 	return statement
-
 
 # one element of the answer_statements is a dictionary with 'entity', 'object', 'predicate' and 'qualifiers' attributes
 # see statement_structure.json for details
