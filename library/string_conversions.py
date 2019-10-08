@@ -79,3 +79,62 @@ def is_timestamp(timestamp):
 		return False
 	else:
 		return True
+
+# create the question words list
+def create_question_words_list(question):
+	question_words = []
+	# remove symbols
+	question = question.replace(',', '').replace('!', '').replace('?', '').replace('.', '').replace('\'', '').replace('"', '').replace(':','').replace('’', '')
+	# expand the question by whitespaces to be able to find the stopwords
+	question = (" " + question + " ").lower()
+	# replace w-words by type asked for
+	question = question.replace(" where ", " location ")
+	question = question.replace(" wheres ", " location ")
+	question = question.replace(" when ", " date ")
+	question = question.replace(" whens ", " date ")
+	question = question.replace(" who ", " person ")
+	question = question.replace(" whos ", " person ")
+	question = question.replace(" why ", " cause ")
+	question = question.replace(" whys ", " cause ")
+	# remove stopwords
+	for stopword in stopwords:
+		question = question.replace(" "+stopword+" ", " ")
+	# remove remaining s from plural or possesive expressions
+	question = question.replace(' s ', ' ')
+	# remove whitespaces
+	while "  " in question:
+		question = question.replace("  ", " ")
+	# remove the whitespace(s) at the front and end
+	question = question.strip()
+	# get all question words
+	question_words += question.split(" ")
+	return question_words
+
+# remove all unnecessary words of the question to avoid noise in the similarity-computation
+def shorten_question_for_predicate_similarity(question, entity_spot):
+	# remove the spot of the entity
+	question = question.replace(entity_spot, "")
+	# remove symbols
+	question = question.replace(',', '').replace('!', '').replace('?', '').replace('.', '').replace("'", '').replace('"', '').replace(':','').replace('’', '')
+	# expand the question by whitespaces to be able to find the stopwords
+	question = (" " + question + " ").lower()
+	# remove stopwords
+	for stopword in stopwords:
+		question = question.replace(" "+stopword+" ", " ")
+	# replace w words, but still keep the information in the question
+	question = question.replace(" where ", " location ")
+	question = question.replace(" wheres ", " location ")
+	question = question.replace(" when ", " date ")
+	question = question.replace(" whens ", " date ")
+	question = question.replace(" who ", " person ")
+	question = question.replace(" whos ", " person ")
+	question = question.replace(" why ", " cause ")
+	question = question.replace(" whys ", " cause ")
+	# wikidata does not give the accuracy of the date (year, month, ...)
+	question = question.replace('year', 'date')
+	# remove remaining s from plural or possesive expressions
+	question = question.replace(' s ', ' ')
+	# remove whitespaces
+	while "  " in question:
+		question = question.replace("  ", " ")
+	return question.strip()

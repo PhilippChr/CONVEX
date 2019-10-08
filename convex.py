@@ -63,66 +63,6 @@ def build_candidate_queue(graph):
 #####################################################
 ###		Other functions
 #####################################################
-
-# create the question words list
-def create_question_words_list(question):
-	question_words = []
-	# remove symbols
-	question = question.replace(',', '').replace('!', '').replace('?', '').replace('.', '').replace('\'', '').replace('"', '').replace(':','').replace('’', '')
-	# expand the question by whitespaces to be able to find the stopwords
-	question = (" " + question + " ").lower()
-	# replace w-words by type asked for
-	question = question.replace(" where ", " location ")
-	question = question.replace(" wheres ", " location ")
-	question = question.replace(" when ", " date ")
-	question = question.replace(" whens ", " date ")
-	question = question.replace(" who ", " person ")
-	question = question.replace(" whos ", " person ")
-	question = question.replace(" why ", " cause ")
-	question = question.replace(" whys ", " cause ")
-	# remove stopwords
-	for stopword in stopwords:
-		question = question.replace(" "+stopword+" ", " ")
-	# remove remaining s from plural or possesive expressions
-	question = question.replace(' s ', ' ')
-	# remove whitespaces
-	while "  " in question:
-		question = question.replace("  ", " ")
-	# remove the whitespace(s) at the front and end
-	question = question.strip()
-	# get all question words
-	question_words += question.split(" ")
-	return question_words
-
-
-# remove all unnecessary words of the question to avoid noise in the similarity-computation
-def shorten_question_for_predicate_similarity(question, entity_spot):
-	# remove the spot of the entity
-	question = question.replace(entity_spot, "")
-	# remove symbols
-	question = question.replace(',', '').replace('!', '').replace('?', '').replace('.', '').replace("'", '').replace('"', '').replace(':','').replace('’', '')
-	# expand the question by whitespaces to be able to find the stopwords
-	question = (" " + question + " ").lower()
-	# remove stopwords
-	for stopword in stopwords:
-		question = question.replace(" "+stopword+" ", " ")
-	# replace w words, but still keep the information in the question
-	question = question.replace(" where ", " location ")
-	question = question.replace(" wheres ", " location ")
-	question = question.replace(" when ", " date ")
-	question = question.replace(" whens ", " date ")
-	question = question.replace(" who ", " person ")
-	question = question.replace(" whos ", " person ")
-	question = question.replace(" why ", " cause ")
-	question = question.replace(" whys ", " cause ")
-	# wikidata does not give the accuracy of the date (year, month, ...)
-	question = question.replace('year', 'date')
-	# remove remaining s from plural or possesive expressions
-	question = question.replace(' s ', ' ')
-	# remove whitespaces
-	while "  " in question:
-		question = question.replace("  ", " ")
-	return question.strip()
 	
 # return all found entities 
 def tagme_get_all_entities(utterance, tagmeToken):
@@ -394,7 +334,7 @@ def answer_complete_question(question, tagmeToken):
 	entities = tagme_get_all_entities(question, tagmeToken) 
 	highest_matching_similarity = -1
 	for entity in entities:
-		shortened_question = shorten_question_for_predicate_similarity(question, entity['spot'])
+		shortened_question = string.shorten_question_for_predicate_similarity(question, entity['spot'])
 		statements = wd.get_all_statements_of_entity(entity['wikidata_id'])
 		for statement in statements:
 			# no identifier predicates
@@ -411,7 +351,7 @@ def answer_complete_question(question, tagmeToken):
 
 # answer a follow-up question at a given turn with a given context
 def answer_follow_up_question(question, turn, graph, hyperparameters, number_of_frontier_nodes):
-	question_words = create_question_words_list(question)
+	question_words = string.create_question_words_list(question)
 	candidates = build_candidate_queue(graph)
 	# distance and priors are the same for all question words
 	candidates = determine_attributes(candidates, graph, turn)
