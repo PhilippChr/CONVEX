@@ -1,0 +1,7 @@
+data/*
+library/__pycache__/*
+library/*.pyc
+nohup.out
+settings.json
+results.txt
+results_temp.txt
