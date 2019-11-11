@@ -16,6 +16,10 @@ import glove_similarity as spacy
 import wikidata as wd
 import telegram_api as telegram
 
+# python 2 or 3 compatibility selector
+if sys.version_info[0] >= 3:
+    xrange=range
+
 #####################################################
 ###		Candidate queue creation
 #####################################################
@@ -72,7 +76,7 @@ def tagme_get_all_entities(utterance, tagmeToken):
 			results = json.loads(requests.get('https://tagme.d4science.org/tagme/tag?lang=en&gcube-token=' + tagmeToken + '&text=' + utterance).content)
 			request_successfull = True
 		except:
-			print utterance
+			print(utterance)
 			time.sleep(5)
 	entities = []
 	for result in results["annotations"]:
@@ -413,10 +417,6 @@ def answer_conversation(questions, tagmeToken, hyperparameters, number_of_fronti
 ###		Load data
 #####################################################
 
-# open the stopwords
-with open( "data/stopwords.txt", "r") as data:
-	stopwords = data.read().split('\n')
-
 # open the identifier predicates
 with open( "data/identifier_predicates.json", "r") as data:
 	identifier_predicates = json.load(data)
@@ -430,7 +430,7 @@ with open( "settings.json", "r") as data:
 	domain 						= settings['domain']
 	conversations_path			= settings['conversations_path']
 	telegram_chat_id			= settings['telegram_chat_id']
-	telegram_active 			= isinstance(telegram_chat_id, int):
+	telegram_active 			= isinstance(telegram_chat_id, int)
 
 if __name__ == '__main__':
 	# open the conversations

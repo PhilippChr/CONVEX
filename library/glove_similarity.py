@@ -1,5 +1,10 @@
 import spacy
 import json
+import sys
+
+# python 2 or 3 compatibility selector
+if sys.version_info[0] >= 3:
+    unicode = str
 
 # dict to cache the similarity of two words/phrases
 with open( "data/similarity_dict.json", "r") as data:
@@ -10,7 +15,7 @@ nlp = spacy.load('en_vectors_web_lg')
 
 def save_cached_data():
 	# save the label_dict
-	with open( 'data/similarity_dict.json', 'w') as outfile:
+	with open( 'data/similarity_dict.json', 'wb') as outfile:
 		outfile.write(json.dumps(similarity_dict, separators=(',',':')).encode('utf8'))
 
 #calculate the similarity of the words using word2vec
