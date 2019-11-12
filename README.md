@@ -50,4 +50,6 @@ A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.o
 ```shell
   nohup python convex.py &
 ```
-  
+
+# License
+The CONVEX project by Philipp Christmann is licensed under MIT license.
