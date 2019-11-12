@@ -2,6 +2,10 @@
 from __future__ import unicode_literals
 import re
 
+# open the stopwords
+with open( "data/stopwords.txt", "r") as data:
+	stopwords = data.read().split('\n')
+	
 # get the wikidata id of a wikidata url
 def wikidata_url_to_wikidata_id(url):
 	if not url:

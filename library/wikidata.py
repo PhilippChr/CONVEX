@@ -38,16 +38,16 @@ entity_pattern 		= re.compile('^Q[0-9]*$')
 
 def save_cached_data():
 	# save the label_dict
-	with open( 'data/label_dict.json', 'w') as outfile:
+	with open( 'data/label_dict.json', 'wb') as outfile:
 		outfile.write(json.dumps(label_dict, separators=(',',':')).encode('utf8'))
 	# save the predicate_frequencies_dict
-	with open( 'data/predicate_frequencies_dict.json', 'w') as outfile:
+	with open( 'data/predicate_frequencies_dict.json', 'wb') as outfile:
 		outfile.write(json.dumps(predicate_frequencies_dict, separators=(',',':')).encode('utf8'))
 	# save the entity_frequencies_dict
-	with open( 'data/entity_frequencies_dict.json', 'w') as outfile:
+	with open( 'data/entity_frequencies_dict.json', 'wb') as outfile:
 		outfile.write(json.dumps(entity_frequencies_dict, separators=(',',':')).encode('utf8'))
 	# save the statements_dict
-	with open( 'data/statements_dict.json', 'w') as outfile:
+	with open( 'data/statements_dict.json', 'wb') as outfile:
 		outfile.write(json.dumps(statements_dict, separators=(',',':')).encode('utf8'))
 
 #####################################################

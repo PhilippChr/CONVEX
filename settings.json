@@ -7,5 +7,5 @@
 	"domain_options":							["books", "movies", "music", "soccer", "tv_series", "ALL"],
 	"conversations_path":						"data/test_set/test_set_ALL.json",
 	"wikidata_dump_path":						"data/wikidata2018_09_11.hdt",
-	"telegram_chat_id":							"not needed - allows to send the results via message; need to include bot token in library/telegram_api.py"
+	"telegram_chat_id":							"not needed - allows to send the results via message; need to include bot token in library/telegram_api.py; replace this string with the integer of the chat id"
 }
