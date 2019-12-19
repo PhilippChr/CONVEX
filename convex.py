@@ -248,7 +248,7 @@ def determine_top_candidates(candidates_with_scores, frontier_hyperparameters, k
 		kg_priors_queue.append({'id': counter, 'candidate': candidate[candidate['type']], 'score': candidate['score']['priors'], 'statement': candidate['statement'] })
 	kg_priors_queue = sorted(kg_priors_queue, key = lambda j: j['score'], reverse=True)
 
-	top_candidates =  fagins_algorithm(matching_similarity_queue, context_distances_queue, kg_priors_queue, frontier_hyperparameters, k=3)
+	top_candidates =  fagins_algorithm(matching_similarity_queue, context_distances_queue, kg_priors_queue, frontier_hyperparameters, k=k)
 	return top_candidates
 
 #####################################################
