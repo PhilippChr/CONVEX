@@ -8,7 +8,7 @@ A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.o
 # Requirements
 
 - Python 2.7 (Python 3 should also work) and the following modules:
-  - Install all needed modules:
+  - Install all needed modules: 
      ```shell
     pip install spacy requests hdt networkx
     ```
@@ -18,6 +18,7 @@ A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.o
     ```
 - wget utility
 
+(If there are any issues installing hdt, please check out issue #5).
 
 # Run CONVEX on ConvQuestions 
 ***(with new train-dev-test split)***
