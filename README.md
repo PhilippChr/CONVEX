@@ -52,5 +52,27 @@ A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.o
   nohup python convex.py &
 ```
 
+# Citation
+Please cite the CIKM paper if you use CONVEX in your work:
+```shell
+@inproceedings{christmann2019look,
+ author = {Christmann, Philipp and Saha Roy, Rishiraj and Abujabal, Abdalghani and Singh, Jyotsna and Weikum, Gerhard},
+ title = {Look Before You Hop\&\#58; Conversational Question Answering over Knowledge Graphs Using Judicious Context Expansion},
+ booktitle = {Proceedings of the 28th ACM International Conference on Information and Knowledge Management},
+ series = {CIKM '19},
+ year = {2019},
+ isbn = {978-1-4503-6976-3},
+ location = {Beijing, China},
+ pages = {729--738},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/3357384.3358016},
+ doi = {10.1145/3357384.3358016},
+ acmid = {3358016},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {conversations, knowledge graphs, question answering},
+} 
+```
+
 # License
-The CONVEX project by Philipp Christmann is licensed under MIT license.
+The CONVEX project by Philipp Christmann, Rishiraj Saha Roy and Gerhard Weikum is licensed under MIT license.
