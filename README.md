@@ -2,7 +2,7 @@
 
 CONVEX is an unsupervised method that can answer incomplete questions over knowledge graphs (Wikidata in our case) by maintaining conversation context using entities and predicates seen so far and automatically inferring missing or ambiguous pieces for follow-up questions. The core of our method is a graph exploration algorithm that judiciously expands a frontier to find candidate answers for the current question. For details, please refer to the paper.
 
-The website of our work is available here:  http://qa.mpi-inf.mpg.de/convex/  
+The website of our work (including a demo) is available here:  https://convex.mpi-inf.mpg.de/
 A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.org/abs/1910.03262 
 
 # Requirements
@@ -53,7 +53,7 @@ A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.o
 ```
 
 # Citation
-Please cite the CIKM paper if you use CONVEX in your work:
+Please cite our CIKM 2019 paper if you use CONVEX in your work:
 ```shell
 @inproceedings{christmann2019look,
  author = {Christmann, Philipp and Saha Roy, Rishiraj and Abujabal, Abdalghani and Singh, Jyotsna and Weikum, Gerhard},
