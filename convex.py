@@ -228,7 +228,8 @@ def determine_matching_similarity(question_word, candidate, is_question_entity=F
 		matching_similarity = question_word['link_probability']
 		return matching_similarity
 	else:
-		matching_similarity = spacy.similarity_word2vec(question_word, candidate['label'])
+		label = wd.wikidata_id_to_label(candidate['label'])
+		matching_similarity = spacy.similarity_word2vec(question_word, label)
 		return matching_similarity
 
 def determine_top_candidates(candidates_with_scores, frontier_hyperparameters, k=3):
