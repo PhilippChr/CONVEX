@@ -5,6 +5,11 @@ CONVEX is an unsupervised method that can answer incomplete questions over knowl
 The website of our work (including a demo) is available here:  https://convex.mpi-inf.mpg.de/
 A preprint of our corresponding CIKM'19 paper can be found here: https://arxiv.org/abs/1910.03262 
 
+# Demo is now available!
+
+A demo of CONVEX is available on our website https://convex.mpi-inf.mpg.de.
+Have a look at the sample conversations to get a feel for the input, and try it out!
+
 # Requirements
 
 - Python 2.7 (Python 3 should also work) and the following modules:
