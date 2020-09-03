@@ -228,7 +228,10 @@ def determine_matching_similarity(question_word, candidate, is_question_entity=F
 		matching_similarity = question_word['link_probability']
 		return matching_similarity
 	else:
+		if not candidate['label']:
+			return 0
 		label = wd.wikidata_id_to_label(candidate['label'])
+
 		matching_similarity = spacy.similarity_word2vec(question_word, label)
 		return matching_similarity
 
@@ -456,6 +459,7 @@ if __name__ == '__main__':
 			total_hit_at_5_score 		+= hit_at_5(answer, golden_answers[1:][index])
 			question_counter 			+= 1
 
+	print_results("Test")
 	print_results( domain )
 	print_results( "MRR_score: 	" + str((question_counter, (total_mrr_score/float(question_counter)), total_mrr_score)))
 	print_results( "P@1: 		" + str((question_counter, (total_precision_at_1_score/float(question_counter)), total_precision_at_1_score)))
